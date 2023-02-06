@@ -70,3 +70,16 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+self.addEventListener('install', event=>{
+  console.log('Nueva version instalada');
+  self.registration.showNotification("existe una nueva version de la super app!!!" , { body: "instalala ahora mismo" })
+})
+
+self.addEventListener('activate', event=>{
+  console.log('Nueva versiòn activada');
+})
+self.addEventListener('push', event => {
+  console.log(event.data.jsos());
+  self.registration.showNotification("Nueva Notificación" , { body: "Enviado desde el serveidor express" })
+  // console.log("push");
+})
